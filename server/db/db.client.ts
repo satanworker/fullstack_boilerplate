@@ -16,19 +16,4 @@ export class DBClient {
             }
         });
     }
-    login(email, password) {
-        return new Observable((observer) => {
-            let query = 'SELECT * FROM denta.users WHERE email=? AND password=? ALLOW FILTERING';
-            this.client.execute(query, [email, password], (err, result) => {
-                if (err) {
-                    return observer.error(err);
-                }
-                if (result) {
-                    observer.next(JSON.stringify(result.rows[0]));
-                }
-            });
-        });
-    }
-    signup(email, password) {
-    }
 }

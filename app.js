@@ -35,7 +35,7 @@ module.exports =
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/Users/satanworker/Desktop/fullstack_boilerplate";
+/******/ 	__webpack_require__.p = "/Users/kosmos/Project/fullstack_boilerplate";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -135,7 +135,6 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var rxjs_1 = __webpack_require__(11);
 	var cassandra = __webpack_require__(7);
 	var DBClient = (function () {
 	    function DBClient(globalService) {
@@ -149,22 +148,6 @@ module.exports =
 	                return console.log('client connect error');
 	            }
 	        });
-	    };
-	    DBClient.prototype.login = function (email, password) {
-	        var _this = this;
-	        return new rxjs_1.Observable(function (observer) {
-	            var query = 'SELECT * FROM denta.users WHERE email=? AND password=? ALLOW FILTERING';
-	            _this.client.execute(query, [email, password], function (err, result) {
-	                if (err) {
-	                    return observer.error(err);
-	                }
-	                if (result) {
-	                    observer.next(JSON.stringify(result.rows[0]));
-	                }
-	            });
-	        });
-	    };
-	    DBClient.prototype.signup = function (email, password) {
 	    };
 	    return DBClient;
 	}());
@@ -200,12 +183,6 @@ module.exports =
 /***/ function(module, exports) {
 
 	module.exports = require("http");
-
-/***/ },
-/* 11 */
-/***/ function(module, exports) {
-
-	module.exports = require("rxjs");
 
 /***/ }
 /******/ ]);
